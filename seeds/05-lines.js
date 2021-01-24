@@ -1,0 +1,58 @@
+
+exports.seed = function(knex) {
+  // Deletes ALL existing entries
+  return knex('Lines').truncate()
+    .then(function () {
+      // Inserts seed entries
+      return knex('Lines').insert([
+        {line_position: 1,
+           tag: 1,
+           code: 1,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<form>This is a form</form>"},
+        {line_position: 2,
+           tag: 1,
+           code: 1,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<div>This is a form</div>"},
+        {line_position: 3,
+           tag: 3,
+           code: 1,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "Something that has no tag"},
+        {line_position: 1,
+           tag: 1,
+           code: 2,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<form>This is a form</form>"},
+        {line_position: 2,
+           tag: 1,
+           code: 2,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<div>This is a form</div>"},
+        {line_position: 1,
+           tag: 3,
+           code: 3,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "Just some Text"},
+        {line_position: 1,
+           tag: 1,
+           code: 4,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<form>This is a form</form>"},
+        {line_position: 1,
+           tag: 1,
+           code: 5,
+           line_date_created: "01/11/2021",
+           line_date_changed: "01/22/2021",
+           line_data: "<form>This is a form</form>"},
+      ]);
+    });
+};
