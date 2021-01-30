@@ -6,11 +6,20 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('Users').insert([
         {user_email: "testUser01@test.com",
-         username: "testUser01"},
+         username: "testUser01",
+         name: "jake",
+         key: "testPass1",
+         didAgree: true},
         {user_email: "testUser02@test.com",
-         username: "testUser02"},
+         username: "testUser02",
+         name: "ryan",
+         key: "testPass2",
+         didAgree: true},
         {user_email: "testUser03@test.com",
-         username: "testUser03"}
+         username: "testUser03",
+         name: "steven",
+         key: "testPass3",
+         didAgree: true}
       ]);
     });
 };

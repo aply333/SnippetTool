@@ -17,7 +17,60 @@
 
 ---
 
-## January 24, 2021
+### January 30, 2021
+
+- Put work with passport to the side, and decided to use JSONwebtokens.
+- `bcryptjs` & `jsonwebtoken`: Password hashing and authentication completed.
+  - `authRoutes`: This contains the routes for logging in and registering.
+    - `.route("/login")`:
+      - From body data it will take an `email` and `key`.
+      - It will then next search the database for a matching user with said email: `findUser(email)`.
+        - If not found a `status(404)` will be returned, this is done in the outside `try`and `catch`.
+      - Next, `keyCheck` is declared, which will run bcrypt to return a true or false, depending if the password matches the hash stored in the database.
+        - If valid, a session token will be sent to the client.
+        - Else,  a `status(401)` is sent stating the password is invalid.
+    - `.route("/register")`:
+      - Stores `req.body` in the `new_user` variable.
+      - Then it will take the key given in `new_user`, hash it, then reassign it to the `new_user`.
+      - Next, there is a check on the `new_user` data, using the `validUserData()` function.
+      - Finally, it will insert the new user into the database:
+        - On success will return the send the client the user data with a `satus(201)`
+        - On fail it will console log the error.
+  - `tokenGenerate()`: Takes one argument, a user object. 
+    - Using the user object it will generate a token to use in authorization.
+    - Each session will last for two hours.
+  - `auth_middleware`: This is middleware to be used on the `userRoutes`.
+    - This will grab a token from the request.
+    - If the tocken does not match it will return a `status(401)`, and respond with an unmatched messege.
+    - If the tocken is not found, it will return a `status(401)` and respond with a "Please log-in." messege.
+- Code has been cleaned a bit.
+  - Moved authentication to its own routes and folder.
+  - Created folders to store all internal routes. Code to be brocken into matching front end components.
+
+---
+
+
+
+### January 28, 2021
+
+- Created `userModel.js`:
+  - `findUser(email)`: 
+    - SELECT * WHERE user_email = email
+    - returns the user where the email matches input.
+  - `registerUser(user)`:
+    - Takes a json object:
+      - Email, username, name, didAgree.  Password to be connected, once bcrytp is incorperated. 
+- Created `validUserData(user_data)`:
+  - Takes one argument `user_data`, this should be the posted data provided from `req.body`.
+  - This will check that every piece of data, that is needed, is there and is the correct data type.
+    - Name, username, email are all strings and cannot be empty strings.
+    - didAgree, must be true to be processed.
+
+___
+
+
+
+### January 24, 2021
 
 - Settup a basic Express Server, pings when `localhost:5000` is called in browser.
 

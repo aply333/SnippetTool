@@ -7,6 +7,13 @@ exports.up = function(knex) {
                 .unique()
                 .notNullable()
             table.text("username", 26)
+                .notNullable()
+            table.text("name")
+                .notNullable()
+            table.string("key")
+                .notNullable()
+            table.boolean("didAgree")
+                .notNullable()
         })
         .createTable('Projects', table=>{
             table.increments("project_id")
