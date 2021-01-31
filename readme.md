@@ -1,4 +1,4 @@
-# Project Goals
+# Project Goals: BackEND
 
 - Practice in building, with a focus on handling foreign keys pointed at in a number of directions.
   - Manages:
@@ -17,7 +17,44 @@
 
 ---
 
-### January 30, 2021
+Logs Table:
+
+1. [January 30th](#jan30th) : Accesing Data for display.
+2. [January 29th](#jan29th) : Building Encryption.
+3. [January 28th](#jan28) : Builing Users Model.
+4. [January 24th ](#jan24): Building Base Database.
+
+---
+
+
+
+### <a name="jan30th">January 30, 2021</a>
+
+- Created Two new routes:
+  - `at/:username/projects/:user_id`:
+    - With a given user_id paramater it will query the database and return all the projects attached to said user.
+  - `at/:username/projects/:user_id/:project_id`:
+    - With the project_id parameter it will query and return all the code sections attached to said project.
+    - It has a validation check: 
+      - It will query backwards the project_id to find its associatated user_id.
+      - If the user_id param does not match the reverse search, server will return with an unauthorized table error.
+- New Models were created to help with users function. They are kept in  `projectModels.js`.
+  - `queryUserProjects(user_id)`:
+    - takes in a user id, and will return all the projects attached to said user.
+  - `queryProjectsID(project_id)`:
+    - Will return the user/s that are attached to a given project.
+  - `queryProjectCode(project_id)`:
+    - Will take the project_id and return all the code pages associated with given Project.
+- Began moving state to Redux:
+  - `user_data` is now being stored in redux store rather locked in login.
+    - `data`:
+      1. `didAgree`: 1 = true, 0 = false: _Should never be false._
+      2. `name`: string of user's name.
+      3. `user_email`: string of user's email.
+      4. `user_id`: this is the Id that it matched up in the database.
+      5. `username`: the accounts name, this Is what is allowed to be publicly visible.
+
+### <a name="jan29th">January 29, 2021</a>
 
 - Put work with passport to the side, and decided to use JSONwebtokens.
 - `bcryptjs` & `jsonwebtoken`: Password hashing and authentication completed.
@@ -51,7 +88,7 @@
 
 
 
-### January 28, 2021
+### <a name="jan28">January 28, 2021</a>
 
 - Created `userModel.js`:
   - `findUser(email)`: 
@@ -70,7 +107,7 @@ ___
 
 
 
-### January 24, 2021
+### <a name="jan24">January 24, 2021</a>
 
 - Settup a basic Express Server, pings when `localhost:5000` is called in browser.
 
@@ -127,9 +164,10 @@ ___
   - Create Data-Base Helpers.
     - Now that the base data and tables are made, I need to create helpers that will collect data in an organized fashion.
     - Need to create the appropriate helpers for each component that will be displayed on the Front - End.
-  - Incorporate O-Auth:
-    - Hesitant on putting this high on the priority list, for development life may be simpler to put it off till I get a portion of the front-end complete. 
-      - In past expeiriences it can create a headache trying to simply just see the exchange of data.
+  - ~~Incorporate O-Auth:~~
+    - ~~Hesitant on putting this high on the priority list, for development life may be simpler to put it off till I get a portion of the front-end complete.~~
+      - ~~In past expeiriences it can create a headache trying to simply just see the exchange of data.~~
+    - Decided to work with webtokens, more familiar and have a deadline in mind.
 
 ---
 
@@ -139,3 +177,6 @@ ___
 2. Knex
 3. Nodemon
 4. Sqlite3
+5. Bcrypt
+6. CORS
+7. JSONWebtoken

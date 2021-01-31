@@ -9,7 +9,6 @@ module.exports = tokenGenerate;
         username: user.username
     }
     const secret = tokenSecret.jwt_secret;
-    console.log(secret)
     const options = {
         expiresIn: '2h'
     }
