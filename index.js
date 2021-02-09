@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const authenticate = require("./authentication/auth_middleware");
 const authRoute = require("./authentication/authRoutes");
 const userRoutes = require("./registeredRoutes/userRoutes")
+const postRoutes = require("./registeredRoutes/postRoutes")
 const helmet = require("helmet")
 const cors = require("cors")
 
@@ -27,6 +28,7 @@ server.use(bodyParser.json())
 server.use(logger)
 server.use("/user", authRoute)
 server.use("/at/:username", authenticate ,userRoutes)
+server.use("/postat/:username", authenticate, postRoutes)
 
 server.get('/', (req, res) => {
     res.status(200).json({location:"Backend Root"})

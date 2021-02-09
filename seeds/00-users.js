@@ -1,3 +1,8 @@
+const bcrypt = require('bcryptjs');
+
+const testKey1 = bcrypt.hashSync("testKey1", 12)
+const testKey2 = bcrypt.hashSync("testKey2", 12)
+const testKey3 = bcrypt.hashSync("testKey3", 12)
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
@@ -8,17 +13,17 @@ exports.seed = function(knex) {
         {user_email: "testUser01@test.com",
          username: "testUser01",
          name: "jake",
-         key: "testPass1",
+         key: testKey1,
          didAgree: true},
         {user_email: "testUser02@test.com",
          username: "testUser02",
          name: "ryan",
-         key: "testPass2",
+         key: testKey2,
          didAgree: true},
         {user_email: "testUser03@test.com",
          username: "testUser03",
          name: "steven",
-         key: "testPass3",
+         key: testKey3,
          didAgree: true}
       ]);
     });

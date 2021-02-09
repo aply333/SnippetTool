@@ -1,0 +1,58 @@
+
+exports.seed = function(knex) {
+  // Deletes ALL existing entries
+  return knex('Marker').truncate()
+    .then(function () {
+      // Inserts seed entries
+      return knex('Marker').insert([
+        {startRow: 0,
+         startCol: 0,
+         endRow: 1,
+         endCol: 20,
+         tag: 1,
+         code: 1,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},
+        {startRow: 3,
+         startCol: 0,
+         endRow: 6,
+         endCol: 20,
+         tag: 1,
+         code: 1,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},
+        {startRow: 0,
+         startCol: 0,
+         endRow: 1,
+         endCol: 20,
+         tag: 1,
+         code: 2,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},
+        {startRow: 0,
+         startCol: 0,
+         endRow: 1,
+         endCol: 20,
+         tag: 1,
+         code: 3,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},
+        {startRow: 0,
+         startCol: 0,
+         endRow: 1,
+         endCol: 20,
+         tag: 1,
+         code: 4,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},
+        {startRow: 0,
+         startCol: 0,
+         endRow: 1,
+         endCol: 20,
+         tag: 1,
+         code: 5,
+         marker_date_created: "01/11/2021",
+         marker_date_changed: "01/22/2021"},         
+      ]);
+    });
+};

@@ -5,12 +5,9 @@ module.exports = {
   registerUser,
 };
 
- function findUser(email) {
-    const user =  db("Users")
-                    .first('*')
-                    .where("user_email", email);
-      return user  
-  
+function findUser(email) {
+  const user = db("Users").first("*").where("user_email", email);
+  return user;
 }
 
 async function registerUser(new_user) {
